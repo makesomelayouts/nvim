@@ -29,6 +29,8 @@ require("lazy").setup({
     -- to make folder plugins work
     { import = "plugins" },
 
+    { "kdheepak/lazygit.nvim" },
+
     -- auto-save
     {
       "pocco81/auto-save.nvim",

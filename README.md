@@ -29,39 +29,14 @@ in json config.
 
 Nerdfonts: For nvim-qt add in init.lua
 
-Make treesitter work
 ```bash
-winget install --id=BrechtSanders.WinLibs.POSIX.UCRT -e
+winget install BrechtSanders.WinLibs.POSIX.UCRT Python.Python.3.12 7zip.7zip
 ```
 
-3.12
-```bash
-winget install Python.Python.3.12
 ```
-
-```bash
-winget install -e --id 7zip.7zip
-```
-
-Install Treesitter
-```
-npm install -g tree-sitter-cli
+npm install -g tree-sitter-cli ripgrep fd-find fzf lazygit
 ```
 or
 ```
-choco install tree-sitter -y
+choco install tree-sitter ripgrep fd fzf -y lazygit
 ```
-
-Install repgrip and fd
-```bash
-npm install -g ripgrep fd-find fzf
-```
-```
-```
-or
-```bash
-choco install ripgrep fd fzf -y
-```
-```
-```
-

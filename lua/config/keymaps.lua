@@ -46,9 +46,11 @@ map("n", "<leader>T", function()
   Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
 end, { desc = "TODO,FIX,FIXME List" })
 
--- move lines in visual mode
-map("v", "<Tab>", ">", { desc = "Toggle comments" })
-map("v", "<S-Tab>", "<", { desc = "Toggle comments" })
+-- Indent lines
+map("n", "<Tab>", ">>", { desc = "Indent right" })
+map("n", "<S-Tab>", "<<", { desc = "Indent left" })
+map("v", "<Tab>", ">gv", { desc = "Indent right" })
+map("v", "<S-Tab>", "<gv", { desc = "Indent left" })
 
 -- space f = fold todo: maybe better way
 map("n", "<leader>f", "za", { desc = "toggle fold" })

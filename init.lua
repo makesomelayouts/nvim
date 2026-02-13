@@ -2,5 +2,5 @@
 require("config.lazy")
 
 if vim.fn.exists(":GuiFont") ~= 0 then
-  vim.cmd([[GuiFont! CaskaydiaCove Nerd Font Mono:h12]])
+  vim.cmd([[GuiFont! CaskaydiaCove Nerd Font Mono:h16]])
 end

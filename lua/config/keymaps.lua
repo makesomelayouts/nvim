@@ -20,8 +20,16 @@
 
 local map = vim.keymap.set
 
-map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+-- Change from Insert to Normal mode
+map("i", "jk", "<Esc>")
+map("i", "jj", "<Esc>")
+map("i", "kj", "<Esc>")
+map("i", "kk", "<Esc>")
+
+-- <leader>fb = opened buffers or <leader>b  FIXME:
+map("n", "<leader>b", function()
+  Snacks.picker.buffers()
+end, { desc = "Buffers" })
 
 map("n", "<C-w>", function()
   Snacks.bufdelete()

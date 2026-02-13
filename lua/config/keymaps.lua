@@ -26,6 +26,12 @@ map("i", "jj", "<Esc>")
 map("i", "kj", "<Esc>")
 map("i", "kk", "<Esc>")
 
+-- Nav between panes
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
 -- <leader>fb = opened buffers or <leader>b  FIXME:
 map("n", "<leader>b", function()
   Snacks.picker.buffers()
@@ -94,9 +100,7 @@ end, { desc = "Projects" })
 -- Find files
 map("n", "<leader><leader>", LazyVim.pick("files", { hidden = true }), { desc = "Find files" })
 
--- Перемещение буферов влево/вправо через Alt + h/l / Ctrl + h/l
-map("n", "<C-H>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
-map("n", "<C-L>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
+-- Move buffers
 map("n", "<A-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
 map("n", "<A-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
 

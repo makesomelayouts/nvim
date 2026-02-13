@@ -19,20 +19,15 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      opts = { colorscheme = "everforest" },
       picker = {
         files = {
           hidden = true,
         },
       },
     },
-    -- tierlist colorschemes:
-    -- 1. everforest
-    -- 2. habamax
-    -- 3. catppuccin-mocha
 
-    -- colorschemes
-    { "sainnhe/everforest" },
+    -- to make folder plugins work
+    { import = "plugins" },
 
     -- auto-save
     {
@@ -83,9 +78,16 @@ require("lazy").setup({
     {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      build = "cd app && yarn install",
+      -- build = "cd app && yarn install",
+      -- install w/o yarn or npm
+      build = function()
+        vim.fn["mkdp#util#install"]()
+      end,
       init = function()
         vim.g.mkdp_filetypes = { "markdown" }
+        vim.g.mkdp_auto_close = 0 -- close preview when go to another buffer
+        -- vim.g.mkdp_auto_start = 1 -- open preview when enter .md buffer
+        vim.g.mkdp_open_to_the_world = 0 -- preview server available to others in network
       end,
       ft = { "markdown" },
     },
@@ -101,7 +103,7 @@ require("lazy").setup({
       "folke/todo-comments.nvim",
     },
 
-    -- comment
+    -- comments
     {
       "numToStr/Comment.nvim",
       dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
@@ -224,11 +226,12 @@ require("lazy").setup({
       end,
     },
 
-    -- discord?
+    -- discord
     {
       "vyfor/cord.nvim",
     },
 
+    -- hide node_modules
     {
       "folke/snacks.nvim",
       opts = {
@@ -256,6 +259,31 @@ require("lazy").setup({
       config = function(_, opts)
         require("nvim-highlight-colors").setup(opts)
       end,
+    },
+
+    -- let blink pick lua by default
+    {
+      "saghen/blink.cmp",
+      opts = {
+        fuzzy = { implementation = "lua" },
+      },
+    },
+
+    -- make explorer being float
+    {
+      "folke/snacks.nvim",
+      opts = {
+        picker = {
+          sources = {
+            explorer = {
+              -- Use "default" or "vertical" to make it float
+              layout = { preset = "default", preview = true },
+              -- Recommended: close the float after selecting a file
+              jump = { close = true },
+            },
+          },
+        },
+      },
     },
   },
   defaults = {

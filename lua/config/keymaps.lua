@@ -2,6 +2,22 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- completion by: C-j, C-k, Tab, Enter
+-- terminal toggle (C-t)
+
+-- free to use:
+-- <leader>e
+
+-- FIXME:
+-- remove all unused keymaps
+
+-- TODO:
+-- restore somehow last deleted buffer
+-- wrap whole word/sentence into "" or '' by shortcut in visual mode
+-- select session (spaceqS)
+-- tag stack? (C-t)
+-- space e - free to use
+
 local map = vim.keymap.set
 
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
@@ -57,9 +73,6 @@ map({ "n", "x" }, "<leader>r", function()
   LazyVim.format({ force = true })
 end, { desc = "Format" })
 
--- completion by: C-j, C-k, Tab, Enter
--- terminal toggle (C-t)
-
 -- Choose colorscheme with preview
 map("n", "<leader>uC", "<cmd>Telescope colorscheme<cr>", { desc = "Colorschemes" })
 
@@ -71,12 +84,46 @@ end, { desc = "Projects" })
 -- Find files
 map("n", "<leader><leader>", LazyVim.pick("files", { hidden = true }), { desc = "Find files" })
 
--- FIXME:
--- remove all unused keymaps
+-- Перемещение буферов влево/вправо через Alt + h/l / Ctrl + h/l
+map("n", "<C-H>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
+map("n", "<C-L>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
+map("n", "<A-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
+map("n", "<A-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
 
--- TODO:
--- restore somehow last deleted buffer
--- wrap whole word/sentence into "" or '' by shortcut in visual mode
--- select session (spaceqS)
--- tag stack? (C-t)
--- space e - free to use
+-- Настройки для Markdown (Ctrl+k)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+
+    -- Режим вставки (оставляем как есть)
+    map("i", "<C-k>", "[]()<Left><Left><Left>", opts)
+
+    -- Normal: берем слово и оборачиваем программно
+    map("n", "<C-k>", function()
+      local word = vim.fn.expand("<cword>")
+      local col = vim.api.nvim_win_get_cursor(0)[2]
+      local line = vim.api.nvim_get_current_line()
+
+      -- Находим границы слова, чтобы заменить именно его
+      local start_col = vim.fn.matchstrpos(line:sub(1, col + word:len()), [[\k*$]])[2]
+      local end_col = start_col + word:len()
+
+      local new_line = line:sub(1, start_col) .. "[" .. word .. "]()" .. line:sub(end_col + 1)
+      vim.api.nvim_set_current_line(new_line)
+      vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1], start_col + word:len() + 2 })
+    end, opts)
+
+    -- Visual: берет выделение (даже V) и чистит его
+    map("v", "<C-k>", function()
+      -- Копируем выделение в регистр z, чтобы не портить системный
+      vim.cmd('normal! "zy')
+      local text = vim.fn.getreg("z"):gsub("[\n\r]", "") -- Удаляем переносы строк
+      local result = "[" .. text .. "]()"
+      -- Вставляем результат на место выделения
+      vim.cmd('normal! gv"zc' .. result)
+      -- Ставим курсор в круглые скобки
+      vim.cmd("normal! hi")
+    end, opts)
+  end,
+})

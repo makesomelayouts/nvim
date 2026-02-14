@@ -28,6 +28,24 @@ require("lazy").setup({
 
     -- to make folder plugins work
     { import = "plugins" },
+
+    { "karb94/neoscroll.nvim" },
+
+    {
+      "windwp/nvim-ts-autotag",
+      event = "InsertEnter",
+      opts = {
+        opts = {
+          enable_close = true,
+          enable_rename = false,
+          enable_close_on_slash = false,
+        },
+      },
+    },
+
+    { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+
+    { "giusgad/pets.nvim" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

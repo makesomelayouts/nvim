@@ -35,10 +35,6 @@ return {
           harpoon.ui:select_menu_item()
         end, { buffer = true, remap = true })
 
-        map("n", "d", function()
-          harpoon.ui:toggle_quick_menu(harpoon:list())
-        end)
-
         -- Disable Shift+Tab in file list
         map("n", "<S-Tab>", "<nop>", { buffer = true })
       end,

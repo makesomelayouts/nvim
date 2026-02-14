@@ -2,22 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- completion by: C-j, C-k, Tab, Enter
--- terminal toggle (C-t)
-
--- free to use:
--- <leader>e
-
--- FIXME:
--- remove all unused keymaps
-
--- TODO:
--- restore somehow last deleted buffer
--- wrap whole word/sentence into "" or '' by shortcut in visual mode
--- select session (spaceqS)
--- tag stack? (C-t)
--- space e - free to use
-
 local map = vim.keymap.set
 
 -- Change from Insert to Normal mode

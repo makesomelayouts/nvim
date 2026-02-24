@@ -2,11 +2,11 @@ return {
   -- markdown preview
   "iamcco/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  -- build = "cd app && yarn install",
+  build = "cd app && yarn install",
   -- install w/o yarn or npm
-  build = function()
-    vim.fn["mkdp#util#install"]()
-  end,
+  -- build = function()
+  --   vim.fn["mkdp#util#install"]()
+  -- end,
   init = function()
     vim.g.mkdp_filetypes = { "markdown" }
     vim.g.mkdp_auto_close = 0 -- close preview when go to another buffer

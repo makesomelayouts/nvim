@@ -39,12 +39,14 @@ Nerdfonts: For nvim-qt add in init.lua
 winget install BrechtSanders.WinLibs.POSIX.UCRT Python.Python.3.12 7zip.7zip
 ```
 
+run cmd.exe with admin rights:
+
 ```
-npm install -g tree-sitter-cli ripgrep fd-find fzf lazygit
+choco install tree-sitter ripgrep fd fzf lazygit -y
 ```
 
 or
 
 ```
-choco install tree-sitter ripgrep fd fzf -y lazygit
+npm install -g tree-sitter-cli ripgrep fd-find fzf lazygit
 ```

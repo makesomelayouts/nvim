@@ -8,5 +8,5 @@ return {
   { "sainnhe/everforest" },
   { "catppuccin/nvim", name = "catppuccin" },
 
-  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } },
+  { "LazyVim/LazyVim", opts = { colorscheme = "everforest" } },
 }

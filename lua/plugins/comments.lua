@@ -28,12 +28,13 @@ return {
 
   -- todo-comments
   {
-    -- TODO:,
-    -- PERF:,
-    -- HACK:,
-    -- NOTE:,
-    -- FIX:,
-    -- WARNING:
+    -- FIXME BUG: FIXIT ISSUE
+    -- TODO:
+    -- HACK:
+    -- WARN WARNING: XXX
+    -- PERF OPTIM PERFORMANCE: OPTIMIZE
+    -- NOTE INFO:
+    -- TEST: TESTING PASSED FAILED
     "folke/todo-comments.nvim",
   },
 }

@@ -26,6 +26,8 @@ require("lazy").setup({
       },
     },
 
+    { import = "lazyvim.plugins.extras.editor.telescope" },
+
     -- to make folder plugins work
     { import = "plugins" },
 

@@ -1,22 +1,24 @@
--- telescope
 return {
   "nvim-telescope/telescope.nvim",
-  opts = {
-    pickers = {
-      colorscheme = {
-        enable_preview = true,
-      },
-      find_files = {
-        file_ignore_patterns = {
-          ".git",
-          ".venv",
-          ".env",
-          -- "node_modules",
-        },
+  -- Принудительно регистрируем команду во вселенной Neovim
+  cmd = "Telescope",
+  -- Корректно сливаем ваши настройки со стандартными настройками LazyVim
+  opts = function(_, opts)
+    opts.pickers = opts.pickers or {}
 
-        -- Set hidden to true to include hidden files (optional)
-        hidden = true,
+    -- Включаем предпросмотр тем оформления
+    opts.pickers.colorscheme = {
+      enable_preview = true,
+    }
+
+    -- Ваши правила для поиска файлов
+    opts.pickers.find_files = {
+      hidden = true, -- показывать скрытые файлы
+      file_ignore_patterns = {
+        ".git/",
+        ".venv/",
+        ".env",
       },
-    },
-  },
+    }
+  end,
 }

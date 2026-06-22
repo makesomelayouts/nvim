@@ -1,23 +1,32 @@
 return {
   "nvim-telescope/telescope.nvim",
-  -- Принудительно регистрируем команду во вселенной Neovim
   cmd = "Telescope",
-  -- Корректно сливаем ваши настройки со стандартными настройками LazyVim
   opts = function(_, opts)
+    local actions = require("telescope.actions")
+
+    opts.defaults = opts.defaults or {}
+    opts.defaults.mappings = {
+      i = { -- insert mode
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+      n = { -- normal mode
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+    }
+
     opts.pickers = opts.pickers or {}
 
-    -- Включаем предпросмотр тем оформления
     opts.pickers.colorscheme = {
       enable_preview = true,
     }
 
-    -- Ваши правила для поиска файлов
     opts.pickers.find_files = {
-      hidden = true, -- показывать скрытые файлы
+      hidden = true,
       file_ignore_patterns = {
         ".git/",
         ".venv/",
-        ".env",
       },
     }
   end,

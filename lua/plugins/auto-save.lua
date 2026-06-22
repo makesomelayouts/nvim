@@ -18,7 +18,6 @@ return {
           local modifiable = fn.getbufvar(buf, "&modifiable")
           local readonly = fn.getbufvar(buf, "&readonly")
 
-          -- Пропускаем специальные буферы
           if utils.not_in(ft, ignore_ft) and utils.not_in(bt, ignore_buftype) then
             if modifiable == 1 and readonly == 0 then
               return true
@@ -34,13 +33,11 @@ return {
           cleaning_interval = 0,
         },
 
-        debounce_delay = 300, -- Увеличил задержку
+        debounce_delay = 300,
         enabled = true,
       })
 
-      vim.keymap.set("n", "<leader>as", ":ASToggle<CR>", { desc = "Toggle auto-save" })
-      vim.cmd("ASToggle")
-      vim.cmd("ASToggle")
+      -- vim.keymap.set("n", "<leader>as", ":ASToggle<CR>", { desc = "Toggle auto-save" })
     end,
   },
 }

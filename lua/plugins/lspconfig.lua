@@ -3,6 +3,35 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        vtsls = {
+          settings = {
+            javascript = {
+              preferences = {
+                importModuleSpecifier = "non-relative",
+                importModuleSpecifierEnding = "minimal",
+              },
+              suggest = {
+                paths = true,
+              },
+            },
+            typescript = {
+              preferences = {
+                importModuleSpecifier = "non-relative",
+                importModuleSpecifierEnding = "minimal",
+              },
+              suggest = {
+                paths = true,
+              },
+            },
+            vtsls = {
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+          },
+        },
         emmet_language_server = {
           filetypes = {
             "css",

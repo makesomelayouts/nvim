@@ -1,5 +1,4 @@
 return {
-  -- auto-save
   {
     "pocco81/auto-save.nvim",
     config = function()
@@ -38,6 +37,8 @@ return {
       })
 
       vim.keymap.set("n", "<leader>as", ":ASToggle<CR>", { desc = "Toggle auto-save" })
+      vim.cmd("ASToggle")
+      vim.cmd("ASToggle")
     end,
   },
 }

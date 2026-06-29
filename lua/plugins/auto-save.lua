@@ -37,7 +37,7 @@ return {
         enabled = true,
       })
 
-      -- vim.keymap.set("n", "<leader>as", ":ASToggle<CR>", { desc = "Toggle auto-save" })
+      vim.keymap.set("n", "<leader>as", ":ASToggle<CR>", { desc = "Toggle auto-save" })
     end,
   },
 }

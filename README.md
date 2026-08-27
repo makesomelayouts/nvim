@@ -22,6 +22,14 @@ or install manually in neovim
 :call mkdp#util#install()
 ```
 
+## Linux
+
+for wayland
+
+```sh
+sudo pacman -S --needed wl-clipboard
+```
+
 ## Windows version (without WSL)
 
 > [!TIP]

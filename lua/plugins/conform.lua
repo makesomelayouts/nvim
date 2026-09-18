@@ -3,6 +3,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
+        javascriptreact = { "prettier" },
         html = { "prettier" },
         css = { "prettier" },
         scss = { "prettier" },
@@ -10,17 +11,6 @@ return {
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
       },
-
-      format_on_save = function(bufnr)
-        if vim.bo[bufnr].filetype == "html" then
-          return false
-        end
-
-        return {
-          timeout_ms = 500,
-          lsp_format = "fallback",
-        }
-      end,
     },
   },
 }

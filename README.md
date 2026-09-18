@@ -8,7 +8,7 @@ $$\LARGE\textsf{\textbf{To make plugins work}}$$
 
 $$\Large\textsf{\textbf{Icons}}$$
 
-Install [nerd font](https://www.nerdfonts.com) (for icons and mono font) <br>(personally I use `CaskaydiaCove Nerd Font Mono` as you can see in `init.lua` file)
+Install [nerd font](https://www.nerdfonts.com) (for icons and mono font) <br>(personally I use `Intel One Mono` as you can see in `init.lua` file)
 
 $$\Large\textsf{\textbf{Markdown preview}}$$
 

@@ -10,6 +10,9 @@ map("i", "jj", "<Esc>")
 map("i", "kj", "<Esc>")
 map("i", "kk", "<Esc>")
 
+map("n", "<Tab>", "<cmd>bnext<cr>", { silent = true, desc = "Next buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", { silent = true, desc = "Prev buffer" })
+
 -- Nav between panes
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
@@ -45,8 +48,8 @@ map("n", "<leader>T", function()
 end, { desc = "TODO,FIX,FIXME List" })
 
 -- Indent lines
-map("n", "<Tab>", ">>", { desc = "Indent right" })
-map("n", "<S-Tab>", "<<", { desc = "Indent left" })
+-- map("n", "<Tab>", ">>", { desc = "Indent right" })
+-- map("n", "<S-Tab>", "<<", { desc = "Indent left" })
 map("v", "<Tab>", ">gv", { desc = "Indent right" })
 map("v", "<S-Tab>", "<gv", { desc = "Indent left" })
 
